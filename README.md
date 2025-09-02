@@ -32,18 +32,20 @@ Gerador de Currículos Inteligente com **preview em tempo real** e **melhorias p
 
 ## 📂 Estrutura da Aplicação
 
+```text
 src/
 ├── App.tsx
 ├── components/
-│ ├── Layout/ (FormSection, PreviewSection)
-│ ├── Form/ (PersonalInfo, Skills, Experience, AIEnhanceButton)
-│ ├── Preview/ (CVPreview, PersonalHeader, SkillsSection, ExperienceSection)
-│ └── UI/ (LoadingSpinner, ErrorBoundary, Toast)
+│   ├── Layout/ (FormSection, PreviewSection)
+│   ├── Form/ (PersonalInfo, Skills, Experience, AIEnhanceButton)
+│   ├── Preview/ (CVPreview, PersonalHeader, SkillsSection, ExperienceSection)
+│   └── UI/ (LoadingSpinner, ErrorBoundary, Toast)
 ├── services/ (aiService.ts)
 ├── hooks/ (useCVData, useAIEnhancement, useToast)
 ├── utils/ (validation.ts, textProcessing.ts)
 ├── types/ (cv.types.ts, api.types.ts)
 └── index.css
+```
 
 
 ## 📌 Requisitos Obrigatórios
