@@ -1,69 +1,82 @@
-# React + TypeScript + Vite
+# 📄 CV Builder AI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Gerador de Currículos Inteligente com **preview em tempo real** e **melhorias por Inteligência Artificial**.
 
-Currently, two official plugins are available:
+## 🚀 Tecnologias
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19**
+- **TypeScript**
+- **TailwindCSS v4**
+- **Vite**
+- **OpenAI API**
 
-## Expanding the ESLint configuration
+## 💡 Conceito da Aplicação
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Layout Split-Screen**  
+  - Esquerda: Formulário completo de entrada de dados  
+  - Direita: Preview do currículo atualizado em tempo real  
+- **Layout fixo para desktop** (sem necessidade de versão mobile)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📝 Seções do Formulário
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+1. **Dados Pessoais**: Nome, Email, Telefone, LinkedIn, Resumo profissional  
+2. **Habilidades**: Lista dinâmica com níveis (Básico/Intermediário/Avançado)  
+3. **Experiências**: Empresa, Cargo, Período, Descrição, checkbox “Trabalho atual”  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## ⚙️ Funcionalidades Core
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- ✅ Preview instantâneo  
+- ✅ Listas dinâmicas (habilidades e experiências)  
+- ✅ Melhorias automáticas de texto por IA  
+- ✅ Interface desktop clean e moderna  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📂 Estrutura da Aplicação
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+src/
+├── App.tsx
+├── components/
+│ ├── Layout/ (FormSection, PreviewSection)
+│ ├── Form/ (PersonalInfo, Skills, Experience, AIEnhanceButton)
+│ ├── Preview/ (CVPreview, PersonalHeader, SkillsSection, ExperienceSection)
+│ └── UI/ (LoadingSpinner, ErrorBoundary, Toast)
+├── services/ (aiService.ts)
+├── hooks/ (useCVData, useAIEnhancement, useToast)
+├── utils/ (validation.ts, textProcessing.ts)
+├── types/ (cv.types.ts, api.types.ts)
+└── index.css
+
+
+## 📌 Requisitos Obrigatórios
+
+1. Layout Split-Screen (scroll independente, fixo para desktop)  
+2. Formulário de Dados Pessoais com validação em tempo real  
+3. Gerenciamento de Habilidades dinâmico  
+4. Gerenciamento de Experiências dinâmico com validações  
+5. Preview em tempo real  
+6. Integração com IA (botões “Melhorar” em textos)  
+7. Melhorias de Texto por IA (resumo e descrições profissionais)  
+8. Estados e Feedback UX (toasts, loaders, skeletons, animações)  
+9. Error Handling robusto  
+10. Segurança e Configuração (variáveis de ambiente, validação de entrada)  
+
+## 🔮 Requisitos Opcionais
+
+- Exportação em PDF (via **jsPDF** + **html2canvas**)  
+- Temas de cores personalizáveis  
+- Atalhos de teclado  
+- Histórico de versões (undo/redo)  
+- Persistência no **localStorage**  
+- Importação/exportação de dados em JSON  
+
+## 🛠️ Conceitos Técnicos Implementados
+
+- Estado compartilhado avançado (sincronização entre formulário e preview)  
+- Inputs controlados com validação  
+- Props e lifting state up  
+- Renderização condicional  
+- Integração com APIs externas (OpenAI)  
+- Performance e otimização (useCallback, debouncing, lazy loading)  
+
+---
+
+📌 **Observação**: Este projeto foi desenhado **exclusivamente para desktop**, sem necessidade de versão responsiva para mobile.
