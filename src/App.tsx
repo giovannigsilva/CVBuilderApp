@@ -7,6 +7,7 @@ import Skills from "./components/Form/Skills";
 import SkillsSection from "./components/Preview/SkillsSection";
 import Experience from "./components/Form/Experience";
 import ExperienceSection from "./components/Preview/ExperienceSection"; 
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const [personalInfo, setPersonalInfo] = useState({
@@ -26,7 +27,8 @@ function App() {
   >([]);
 
   return ( 
-     <div className="grid grid-cols-2 h-screen">
+     <main className="grid grid-cols-2 h-screen">
+      <Toaster position="top-center" reverseOrder={false} />
       <FormSection>
         <PersonalInfo onChange={setPersonalInfo} />
         <Skills onChange={setSkills} />
@@ -38,7 +40,7 @@ function App() {
         <SkillsSection skills={skills} />
         <ExperienceSection experiences={experiences} />
       </PreviewSection>
-    </div>
+    </main>
   );
 }
 

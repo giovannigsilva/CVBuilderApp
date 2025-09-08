@@ -1,4 +1,5 @@
 import { useState } from "react";
+import AIEnhanceButton from './AIEnhanceButton';
 
 interface PersonalInfoProps {
   onChange: (data: {
@@ -22,6 +23,12 @@ export default function PersonalInfo({ onChange }: PersonalInfoProps) {
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     const { name, value } = e.target;
     const newForm = { ...form, [name]: value };
+    setForm(newForm);
+    onChange(newForm);
+  }
+
+  function handleSummaryEnhance(enhancedSummary: string) {
+    const newForm = { ...form, resumo: enhancedSummary };
     setForm(newForm);
     onChange(newForm);
   }
@@ -68,15 +75,24 @@ export default function PersonalInfo({ onChange }: PersonalInfoProps) {
         className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
       />
 
-      <textarea
-        name="resumo"
-        placeholder="Resumo profissional"
-        value={form.resumo}
-        onChange={handleChange}
-        maxLength={500}
-        className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm h-24"
-      />
-      <p className="text-sm text-gray-500">{form.resumo.length}/500 caracteres</p>
+      <div className="relative">
+        <textarea
+          name="resumo"
+          placeholder="Resumo profissional"
+          value={form.resumo}
+          onChange={handleChange}
+          maxLength={500}
+          className="w-full border rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm h-24"
+        />
+        <div className="flex justify-between items-center mt-1">
+          <p className="text-sm text-gray-500">{form.resumo.length}/500 caracteres</p>
+          <AIEnhanceButton
+            textToEnhance={form.resumo}
+            context="resumo"
+            onEnhanced={handleSummaryEnhance}
+          />
+        </div>
+      </div>
     </div>
   );
 }
